@@ -1,4 +1,5 @@
 practice/
 .vscode/
-image/
+*drawio
+*.vsdx
 *.class
