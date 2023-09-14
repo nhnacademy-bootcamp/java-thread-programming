@@ -1,0 +1,24 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/daemon
+
+== User Thread vs Daemon Thread
+
+{empty} +
+
+* Java에서의 thread는 user thread와 daemon thread로 나뉜다.
+* User thread는 특별히 daemon thread로 설정하지 않은 thread로서 일반적으로 생성해서 사용되는 thread이다.
+* JVM은 모든 user thread가 종료될 때까지 프로그램을 실행한다.
+* Daemon thread는 백그라운드에서 동작하는 thread로, user thread가 종료될 때 자동으로 종료된다.
+* 주로 main thread나 다른 user thread의 보조 역할을 수행하거나, 특정 작업을 주기적으로 처리하는 thread 등에 사용된다.
+* JVM은 모든 user thread가 종료되면 daemon thread를 강제로 종료합니다.
+
+{empty} +
+
+link:exam-01.adoc[Exam-01. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread 상태를 확인 하자]
+
+
+
+{empty} + 
+
+=== 정리
+* 모든 thread의 생성과 종료를 직접 관리하지 않을 수도 있다.
+* Deamon thread의 우선 순위는 낮으나 조정 가능하다.

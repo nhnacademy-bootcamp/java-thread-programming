@@ -1,0 +1,81 @@
+== Exam-01. Linux 명령어를 이용해 시스템에서 동작 중인 process와 thread에 알아보자.
+
+{empty} +
+
+1. ps명령을 이용해 동작 중인 process를 확인한다.
++
+--
+====
+[source,console]
+----
+~$ ps -ef 
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  3 17:39 ?        00:00:00 /sbin/init
+root           2       1  0 17:39 ?        00:00:00 /init
+
+...
+
+syslog       148       1  0 17:39 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         149       1  1 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+
+...
+
+root         344       2  0 17:39 ?        00:00:00 /init
+root         345     344  0 17:39 ?        00:00:00 /init
+xtra         346     345  1 17:39 pts/0    00:00:00 -bash
+root         347       2  0 17:39 pts/1    00:00:00 /bin/login -f
+xtra         406       1  0 17:39 ?        00:00:00 /lib/systemd/systemd --user
+xtra         411     406  0 17:39 ?        00:00:00 (sd-pam)
+xtra         416     347  0 17:39 pts/1    00:00:00 -bash
+xtra         477     346  0 17:39 pts/0    00:00:00 ps -ef
+----
+====
+* PID: process 식별자
+--
++
+2. ps명령을 이용해 동작 중인 thread를 확인한다.
++
+--
+====
+[source,console]
+----
+~$ ps -eLf
+UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+root           1       0       1  1    1 17:39 ?        00:00:00 /sbin/init
+root           2       1       2  0    2 17:39 ?        00:00:00 /init
+root           2       1       7  0    2 17:39 ?        00:00:00 /init
+
+... 
+message+     139       1     139  0    1 17:39 ?        00:00:00 @dbus-daemon --system --address=systemd: --nofork --nop
+root         147       1     147  0    1 17:39 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-sta
+syslog       148       1     148  0    4 17:39 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       148       1     156  0    4 17:39 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       148       1     157  0    4 17:39 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       148       1     159  0    4 17:39 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         149       1     149  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     236  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     237  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     238  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     239  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     240  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     270  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     271  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     272  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     273  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     274  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     318  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     484  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+root         149       1     485  0   14 17:39 ?        00:00:00 /usr/lib/snapd/snapd
+
+...
+
+xtra         346     345     346  0    1 17:39 pts/0    00:00:00 -bash
+xtra         487     346     487  0    1 17:39 pts/0    00:00:00 ps -eLf
+~
+----
+====
+* PID: process 식별자
+* LWP: process내에서 thread 식별자
+* NLWP: process에서 생성한 thread 개수
+--
++

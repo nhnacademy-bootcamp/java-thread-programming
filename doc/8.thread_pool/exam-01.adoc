@@ -1,0 +1,60 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/thread_pool
+== Exam-01. 10개의 thread가 시작 메시지를 출력하고, 2초간 대기 후 종료 메시지를 출력하도록 thread pool을 구성해보자.
+
+{empty} + 
+
+=== 과정
+
+1. Runnable interface를 이용해 시작하고 2초 후 종료하는 Worker class를 정의하자.
+** Constructor에서는 이름을 받는다.
++
+[source,java]
+----
+include::{sourcedir}/Worker.java[]
+----
++
+
+2. main()에서 thread pool을 생성한다.
+** 크기는 생성될 thread 갯수보다 적게한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam01.java[lines=9,indent=0]
+----
++
+
+3. Thread pool에 Worker class의 object를 넣는다.
++
+[source,java]
+----
+include::{sourcedir}/Exam01.java[lines=11..13,indent=0]
+----
++
+
+4. 모든 작업이 완료될때까지 기다렸다 종료한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam01.java[lines=16..18,indent=0]
+----
++
+
+{empty} + 
+
+=== Source Code
+
+==== class Worker
+
+[source,java]
+----
+include::{sourcedir}/Worker.java[]
+----
+
+{empty} + 
+
+==== class Exam01
+
+[source,java]
+----
+include::{sourcedir}/Exam01.java[]
+----

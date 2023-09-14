@@ -1,0 +1,252 @@
+== Thread 상태
+
+=== 생명 주기
+
+Thread는 아래와 같은 생명 주기를 가질 수 있다.
+
+image::image/thread_state.png[title="Life cycle of a thread in java"]
+
+{empty} +
+Thread의 상태는 총 6가지로구분될 수 잇으며, 개별 상태로 여러가지 경로가 만들어지 수 있다.
+
+[frame=ends, cols="1,4"]
+|===
+^s|상태
+^s|설명
+
+^s|NEW
+|thread가 실행 준비를 완료한 상태로, start() 함수를 호출하기 전 상태
+
+^s|RUNNABLE
+|start()가 호출되어 실행될 수 있는 상태
+
+^s|RUNNING
+|해당 thread가 동작중인 상태
+
+^s|WAITING
+|다른 thread가 통지할 때까지 기다리는 상태
+
+^s|TIMED_WAITING
+|정해진 시간 동안 기다리는 상태
+
+^s|BLOCKED
+|사용하고자 하는 객체의 잠금(lock)이 풀릴 때까지 대기하는 상태
+
+^s|TERMINATED
+|실행이 종료된 상태
+|===
+
+{empty} +
+
+==== NEW
+
+* Thread object가 생성은 되었지만, 실행은 되지 않은 상태를 말한다.
+
+link:exam-01.adoc[Exam-01. Thread intance를 생성하여 실행 전 상태를 확인해 보자]
+
+==== RUNNABLE
+
+* 실행 준비 상태로 scheduler에 의해 실행되기를 기다리는 상태이다.
+* 언제든지 실행 상태가 될 수 있다.
+
+link:exam-02.adoc[Exam-02. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자]
+
+==== RUNNING
+
+* processor에서 실행중인 상태로서, 다른 thread에서 확인이 불가능하다.
+* 다른 thread는 RUNNABLE, WAITING 등 실행이 아닌 다른 상태중 하나를 갖는다.
+
+==== BLOCKED
+
+* Synchronized code block을 다른 thread가 점유하고 있는 경우, 해당 code block의 점유 상태가 해지 될때까지 기다린다.
+
+link:exam-03.adoc[Exam-03. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자]
+
+
+==== WAITING
+
+* 스스로 대기 상태가 된 후 다른 thread에서 알림을 줄때까지 기다린다.
+* Synchronized block에서 wait(), 다른 thread가 종료되길 기다리는 join() 등 사용한 경우 적용될 수 있다.
+
+link:exam-04.adoc[Exam-04. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자]
+
+
+==== TERMINATED
+
+* Thread가 종료된 상태이다.
+* 앞서 예제에서 확인 가능하다.
+
+==== TIMED_WAITING
+
+* WAITING과 동일하지만, 제한 시간 설정이 가능하다.
+* 제한 시간내에 알림을 받지 못하면 WAITING을 해제하고 RUNNABLE로 변경된다.
+
+{empty} +
+
+
+==== BLOCKED vs WAITING
+
+* BLOCKED와 WAITING 모두 대기 상태이지만, 설정과 해제를 위한 조건에 차이가 있다.
+
+[frame=ends,cols="1,1"]
+|===
+^|**WAITING**
+^|**BLOCKED**
+
+|thread는  wait() 또는 join()을 호출할 때 WAINTING 상태가 된다. thread는 다른 thread가 notify() 또는 notifyAll()을 호출할 때까지 WAITING 상태를 유지한다.
+|thread는 다른 thread에서 알림을 받았지만, 아직 object 잠금이 설정되지 않은 경우 이 상태가 된다.
+
+|WAITING thread는 다른 thread의 알림을 기다리고 있다.
+|BLOCKED thread는 다른 thread가 잠금을 해제하기를 기다리고 있다.
+
+|WAITING thread가 중단될 수 있다.
+|BLOCKED thread는 중단될 수 없다.
+|===
+
+{empty} + 
+
+
+=== Thread 상태 제어
+
+Thread는 내부 동작에 의해 상태가 변경되거나 외부적 요청에 따라 상태 변경이 가능하다.
+
+Thread 상태 변경을 위한 함수는 다음과 같다.
+
+[frame=ends,cols="2,5"]
+|===
+^s|함수
+^s|설명
+
+| *interrupt()*
+| Thread가 WAITING 상태로 있을 경우, InterruptedException을 발생시켜 RUNNABLE 상태로 변경됨
+
+a| 
+--
+*notify()*
+
+*notiflyAll()*
+--
+|Synchronized block 상태에서 wait()에 의해 WAITING 상태에 있는 thread를 RUNNABLE 상태로 변경됨
+
+a|
+--
+*sleep(long millis)*
+
+*sleep(long millis, int nanos)*
+--
+|주어진 시간 동안 thread를 TIMED_WAITING 상태로 만듦. 주어진 시간이 지나면 자동으로  RUNNABLE 상태로 변경됨
+
+a|
+--
+*join()*
+
+*join(long millis)*
+
+*join(long millis, int nanos)*
+--
+|join()을 호출한 thread는 join을 요청한 thread가 종료될때 까지 대기함. Time parameter가 주어질 경우에는 해당 시간 동안만 대기하고, 시간 내에 thread가 종료되지 않으면 thread의 종료와 상관없이 RUNNABLE 상태로 변경됨.
+
+a|
+--
+*wait()*
+
+*wait(long millis)*
+
+*wait(long millis, int nanos)*
+--
+|Synchonized block에서  thread를 WAITING 상태로 만듦. Parameter로 주어진 시간이 지나면 RUNNABLE 상태가 됨. 시간이 주어지지 않은 경우, 다른 thread에서 notify(), notifyAll() 호출에 의해 RUNNABLE 상태로 변경됨.
+
+|*yield()*
+| 일반적으로는 scheduler에 의해 thread간 상태가 전환되지만, yield()의 호출에 의해 RUNNING 상태의 thread는 RUNNABLE 상태로 변경되어 다른 thread가 동작할 수 있도록 함
+|===
+
+
+{empty} +
+
+
+==== interrupt()
+
+* 대상 thread에 interrupt를 발생 시킨다.
+* 대상 thread는 interrupt 발생 상태가 되고, WAITING 상태로 있을 때에는 InterruptException을 발생시키면서 RUNNABLE 상태로 변경된다.
+* Java에는 thread제어를 위해 stop(), suspend(), resume() 등의 동작 제어와 관련된 method가 지원되고 있지만 기존 시스템과의 호환성을 위해 남겨 둘 뿐 안정성 문제로 인해 사용하지 말 것을 권고하고 있다. 
+* 이로 인해, sleep(), wait(), interrupt()는 thread 제어를 위해 많이 사용된다.
+
+{empty} +
+
+==== wait()
+
+* wait()를 호출한 thread는 synchronized block에서 lock을 풀고 WAITING 상태가 된다.
+
+{empty} +
+
+==== notify()와 notifyAll()
+
+* wait()와 함께 notify() 및 notifyAll()는 thread 간의 통신(?)을 설정하는 데 사용된다.
+* Thread는 wait()를 호출하여 WAITING 상태로 들어간다. 이 thread는 다른 thread가 동일한 object에 대해 notify() 또는 notifyAll() 함수를 호출할 때까지 WAITING 상태에 있는다.
+* wait() , notify() 및 notifyAll()을 호출하기 위해서는 block에 대한 lock이 있어야 하므로, synchronized method 또는 synchronized block 내에서만 호출이 가능하다.
+
+**notify()는**
+
+* Thread가 특정 object에 대해 notify()를 호출하면 해당 객체의 잠금 또는 모니터를 기다리는 thread 하나에 대해서만 알린다.
+
+* 이때 선택되는 thread는 무작위이다. 즉, 통지를 위해 무작위로 하나의 thread가 선택된다.
+
+* 통지된 thread는 즉시 object의 잠금을 가져오지 않고, 호출 thread가 해당 object의 잠금을 해제하면 가져온다. 그전까지는 BLOCKED 상태가 된다. 즉, 알림 전 thread는 WAITING 상태가 된다. 
+* 알림을 받으면 BLOCKED 상태로 이동하여 잠금을 얻을 때까지 BLOCKED 상태를 유지한다. 잠금을 얻으면 BLOCKED 상태에서 RUNNING 상태로 이동한다.
+
+**notifyAll()은**
+
+* Thread가 특정 object에 대해 notifyAll() 함수를 호출하면 해당 object의 잠금을 기다리고 있는 모든 thread에 알림이 표시된다.
+* 통지된 모든 thread는 WAITING 상태에서 BLOCKED 상태로 이동하고, 우선순위에 따라 object의 잠금을 얻을 수 있다.
+* Object의 잠금을 얻은 thread는 RUNNING 상태로 이동하고, 나머지 thread는 object 잠금을 얻을 때까지 BLOCKED 상태로 유지된다.
+
+{empty} +
+
+==== sleep()
+
+* static void sleep(long millis);
+* static void sleep(long millis, int nanos);
+* 지정된 시간 동안 thread를 일시 정지한다.
+* 지정된 시간이 지나고 나면 다시 실행상태가 된다.
+
+link:quiz-01.adoc[Quiz-01. sleep()를 이용해 일정 시간 간격으로 tick을 출력하는 ticker를 만들어라]
+
+{empty} +
+
+==== wait() vs sleep()
+
+* wait() 및 sleep()은 모두 일정 기간 동안 thread의 실행을 일시 중지하는 데 사용된다.
+** Thread가 wait()를 호출할 때마다 보유하고 있는 잠금을 해제한 후 *WAITING* 상태가 된다.
+** Thread가 sleep()를 호출할 때마다 보유하고 있는 잠금과 상관없이 *TIMED_WAITING* 상태가 된다.
+
+* *WAITING* 상태(wait() 호출 후 상태)에 있는 thread는 동일한 잠금에서 notify( ) 또는 notifyAll() 함수를 호출하여 다른 thread에 의해 깨울 수 있다. 그러나, *TIMED_WAITING* 상태(sleep() 호출 후 상태)에 있는 thread는 깨울 수 없다. Thread가 잠자는 thread를 interrupt 하면 InterruptedException이 발생한다.
+* wait()는 notify() 및 notifyAll()과 함께 thread간 상태 전환에 사용되며 sleep() 는 특정 시간 동안 현재 thread의 실행을 일시 중지하는 데 사용된다.
+* wait()는 **java.lang.Object class**의 instance method이다. 즉, 이 method는 Java로 생성하는 모든 object에서 사용할 수 있다. 
+* sleep()는 **java.lang.Thread class**의 class method이다. 즉, thread에서만 사용할 수 있습니다.
+
+{empty} +
+
+==== join()
+
+다른 thread가 실행을 완료할 때까지 호출한 thread가 대기한다.
+
+join()는 3가지로 overloading 되어 있다.
+
+* join() : 호출한 thread가 종료될 때까지 기다린다.
+* join(long millis) : 호출한 thread를 지정된 시간 동안만 기다린다. 대기 시간은 밀리초 단위로 제어한다.
+* join(long mills, int nanos) : 호출한 thread를 지정된 시간 동안 기다린다. 대기 시간은 나노초 단위로 제어한다.
+
+link:quiz-02.adoc[Quiz-02. Thread를 실행시키고, 모든 thread가 종료되면 프로그램이 종료되도록 하라]
+
+
+{empty} + 
+
+==== yield() 함수
+
+* static void static();
+* 현재 thread가 processor의 현재 사용을 포기할 의향이 있지만, 가능한 빠른 시간 내에 다시 예약되기를 원한다고 scheduler에게 알리는 기능을 말한다.
+* 하나의 thread가 프로세서를 과도하게 점유하지 않도록 조절할 수 있다.
+
+link:https://www.baeldung.com/java-thread-yield[참고 : Brief Introduction to Java Thread.yield()]
+
+{empty} + 

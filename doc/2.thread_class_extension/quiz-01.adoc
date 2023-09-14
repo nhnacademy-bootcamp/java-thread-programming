@@ -1,0 +1,57 @@
+== Quiz-01. 1초마다 횟수를 1씩 증가하는 Counter class로 정의하고, 실행 후 결과를 확인하라.
+
+{empty} +
+
+=== 요구 사항
+
+* Counter class를 정의하라.
+** 시작 후 1초마다 횟수를 1씩 증가 시킨다.
+** 횟수가 변경될 때마다 이름과 횟수를 출력한다.
+** 주어진 최대 횟수에 도달하면, 동작을 종료한다.
+* Constructor를 정의하라.
+** 이름과 최대 횟수를 인수로 받아 초기화하다.
+** 시작 횟수는 0부터한다.
+* run()을 이용해 실행하도록 구성한다.
+
+
+{empty} +
+
+=== 예상 결과
+
+* name을 counter으로 준다.
+* maxCount를 10으로 준다.
++
+--
+====
+[source,console]
+----
+counter : 1
+counter : 2
+counter : 3
+...
+counter : 10
+----
+====
+--
++
+
+{empty} + 
+
+=== 참고
+
+* 시간 간격 주기footnote:[https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html[Pausing Execution with Sleep]]
+** Thread class에서 지원하는 sleep() 이용할 수 있다.
++
+--
+[source,java]
+----
+static void sleep(long milliseconds)
+static void sleep(long milliseconds, int nanoseconds)
+----
+*** milliseconds(+ nanoseconds) 단위로 잠자며 대기하는 상태가 된다.
+*** nanoseconds는 1 milliseoncds
+--
++
+** sleep()에서는 두가지 exception일 발생할 수 있다.
+*** IllegalArgumentException - unchecked exception으로 compile time에는 처리 여부에 대해서는 확인하지 않는다.
+*** InterruptedExceptionfootnote:[https://www.baeldung.com/java-interrupted-exception[How to handle InterruptedException in Java]] - checked exception으로 compile time에 처리 여부를 확인한다.

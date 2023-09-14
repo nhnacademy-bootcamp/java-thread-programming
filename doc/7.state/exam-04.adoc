@@ -1,0 +1,66 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/state
+
+== Exam-04. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자
+
+{empty} + 
+
+=== 과정
+
+1. Thread class를 이용해 1초에 1씩 증가하여 10까지 증가하는 counter object 생성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam04.java[lines=5,indent=0]
+----
++
+2. Thread class를 이용해 counter가 종료되길 기다리는 waitingCounter를 생성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam04.java[lines=7,indent=0]
+----
++
+3. counter와 waitingCounter를 동작 시킨다.
++
+[source,java]
+----
+include::{sourcedir}/Exam04.java[lines=9..10,indent=0]
+----
++
+4. waitingCounter의 상태를 출력한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam04.java[lines=12..20,indent=0]
+----
++
+5. 결과는 다음과 같다.
++
+====
+[source,console]
+----
+RUNNABLE
+WAITING
+TERMINATED
+----
+====
++
+
+{empty} +
+
+=== Source Code
+
+==== class WaitingCounter
+
+[source,java]
+----
+include::{sourcedir}/WaitingCounter.java[]
+----
+
+==== class Exam04
+
+[source,java]
+----
+include::{sourcedir}/Exam04.java[]
+----
+

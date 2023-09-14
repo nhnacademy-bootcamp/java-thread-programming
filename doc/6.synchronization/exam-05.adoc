@@ -1,0 +1,29 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/synchronization/exam05
+
+== Exam-05. Baeldung: wait and notify() method in java
+
+{empty} +
+
+=== 과정
+
+1. Sender는 문자열을 data를 통해 전달하고, receiver는 data를 통해 문자열을 받는다.
++
+[source,java]
+----
+include::{sourcedir}/Exam05.java[lines=5..7,indent=0]
+----
++
+2. Data class에서는 데이터 전송 요청이 올때, 전송이 완료된 상태이면 메시지를 받아서 전달하고, 그렇지 않으면 wait()을 통해서 WAITING 상태로 전환된다. 이때, WAITING 상태가 되는 thread는 sender이다.
++
+[source,java]
+----
+include::{sourcedir}/Data.java[lines=27..37,indent=0]
+----
++
+3.  Data class에서는 데이터 수신 요청이 올때, 수신된 메시지가 있으면 반환해주고 그렇지 않으면 수신될때 까지 기다린다.
++
+[source,java]
+----
+include::{sourcedir}/Data.java[lines=11..21,indent=0]
+----
++

@@ -1,0 +1,60 @@
+== Runnable interface를 이용한 구현
+
+**여기서는**
+
+* Runnable interface를 구현해 thread로 동작하는 클래스를 만든다.
+* Runnable interface 구현을 통해 여러 작업을 동시해 실행해 확인한다.
+
+{empty} +
+
+=== Runnable Interface
+
+Thread를 이용하는 class는 앞서 소개한 Thread class 확장 외에 Runnablefootnote:[https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html[Interface Runnable]] interfacefootnote:[https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html[Interface]]를 통해서도 정의할 수 있다.
+
+앞서 본 Thread class의 hireachy를 보면 Thread class도 Runnable interface의 구현으로 정의되었음을 알 수 있다.
+
+link:quiz-01.adoc[Quiz-01. Runnable interface를 이용해 RunnableCounter class를 구현해 보자]
+
+Runnable interface는 Thread class를 이용해 실행할 수 있도록 필요한 기능을 method로 선언하고 있을 뿐 실제 실행을 위해서는 Quiz-01에서 보는 바와 같이 별도의 Thread class를 이용한 object 생성이 필요하다.
+
+{empty} +
+
+=== Thread object 관리
+
+Runnable interface를 이용해 thread를 구현한 경우 별도의 thread object의 관리가 필요하다. 
+
+Thread object를 관리하는 몇가지 방법을 알아보자.
+
+1. 생성 후 종료될때 자동 삭제되도록 한다.
+2. 구현되는 class내에 Thread object를 포함시켜 관리한다.
+3. Thread Pool을 이용한다.
+
+{empty} +
+
+==== 생성 후 종료될때 자동 삭제
+Thread는 Runnable interface의 run() 수행이 끝나면 종료된다.
+따라서, 일정한 작업을 외부의 간섭없이 수행하고 종료된다면 운영상에 크게 문제는 없다.
+
+다만, 해당 thread를 원하는 시점에 종료시키거나 관련 정보 확인이 어렵다.
+
+link:exam-01.adoc[Exam-01. Thread object 생성 후 종료될때 자동 삭제하도록 만들어 보자]
+
+{empty} +
+
+==== 구현되는 class내에서 Thread를 field로 포함 
+두번째 방법은 Runnable interface를 구현하는 class가 필요로 하는 Thread instance를 class 내에 포함시켜 관리할 수 있다.
+
+이경우, 생성던 object에서 자신과 관련된 Thread instance를 관리하므로, thread 제어와 관련된 처리가 가능하다.
+
+link:exam-02.adoc[Exam-02. RunnableCounter에 Thread field를 추가하고, 이를 이용해 실행해 보자]
+
+{empty} +
+
+==== Thread Pool을 이용해 관리
+Thread Pool을 이용한 관리는 첫번째 방법과 유사하다. 다만, Thread instance의 생성과 삭제를 반복하지 않고 생성된 Thread instance를 활용하므로 자원 활용면에서 좋다.
+
+하지만, 이 방법은 Thread 관리에 대한 권한이 직접적으로 가지고 있지 못해 Thread 제어가 필요한 경우 사용에 제한이 될 수 있다.
+
+
+link:exam-03.adoc[Exam-03. Thread pool을 이용해 RunnableCounter를 실행해 보자]
+

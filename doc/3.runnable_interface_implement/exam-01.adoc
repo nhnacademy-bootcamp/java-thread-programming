@@ -1,0 +1,73 @@
+== Exam-01. Thread object 생성 후 종료될때 자동 삭제하도록 만들어 보자
+
+{empty} +
+
+=== 과정 
+
+1. Quiz-01에서 구현한 RunnableCounter의 instance를 생성한다.
++
+--
+[source,java,indent=0]
+----
+        RunnableCounter counter = new RunnableCounter("counter", 5);
+----
+--
++
+2. 생성된 object를 Thread instance의 도움을 받아 실행시킨다.
++
+--
+[source,java,indent=0]
+----
+        Thread thread = new Thread(counter);
+
+        thread.start();
+----
+--
++
+3. main()은 종료하지만, 생성된 thread가 돌고 있는 것은 확인 가능하다.
++
+--
+image::image/callstack.png[Call Stack]
+
+* Thread[Thread-0] : 
+--
++
+4. 프로그램이 종료되는 것을 확인한다.
++
+--
+[source,console]
+----
+counter : 1
+counter : 2
+counter : 3
+counter : 4
+counter : 5
+~$
+----
+--
++
+5. 어떠한 문제가 있는가?
+* main()이 먼저 종료하는 것은 thread.join()을 통해 대기 가능하다.
+* counter의 접근도 항시 가능하다.
+* RunnableCounter instance가 여러개 있을때, counter와 thread의 연결 관계는 어떻게 확인할 수 있나?
+* 즉, 특정 RunnableCounter instance가 동작 중인지를 확인하려면? 혹은, 멈추려면?
+
+{empty} +
+
+=== Source Code
+
+==== class Exam01
+
+[source,code]
+----
+package com.nhnacademy.runnable_interface_implement;
+
+public class Exam01 {
+    public static void main(String[] args) {
+        RunnableCounter counter = new RunnableCounter("counter", 5);
+        Thread thread = new Thread(counter);
+
+        thread.start();
+    }
+}
+----

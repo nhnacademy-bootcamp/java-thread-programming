@@ -1,0 +1,28 @@
+== Exam-02. Thread의 interrupt를 이용해 외부에서 중지하도록 만들어라.
+
+{empty} +
+
+=== 요구 사항
+
+* 앞에서 구현한 RunnableCounter class를 이용하라.
+* Thread에서 지원하는 interrupt의 동작을 확인하고, 이를 이용해 동작을 제어하라.
+** Thread는 interrupt가 발생하면 멈추도록 정의한다. 
+
+{empty} +
+
+=== 참고
+
+* Thread에 interrupt가 발생하였다고, 과정을 종료할 필요는 없다. Interrupt 발생 후 처리 과정은 다양하게 활용할 수 있다
+* InterruptedException은 임의의 시점에 발생하지는 않고, sleep(), wait() 등 WAITING 상태일때만 가능하다.
+* InterruptedException은 checked exception으로서 compile time에 처리 여부를 확인할 수 있도록 구성되어야 한다.
+* InterrupedException 처리시에는 try-catch문 외부로 InterruptedException을 던지거나 해당 thread에서 interrupt 처리를 반드시 해야만 한다. 
++
+--
+** 예제에서는 InterruptedException 발생시 해당 thread에 interrupt를 설정해 준다.
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/stop/ThreadUnlimitedCounter.java[lines=19..21,indent=0]
+----
+--
++
+

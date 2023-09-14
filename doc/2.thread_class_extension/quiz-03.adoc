@@ -1,0 +1,38 @@
+== Quiz-03. Counter class의 instance를 2개 이상 만들고 실행 후 동작에 대해 설명해보자
+
+{empty} +
+
+=== 요구 사항
+
+* Counter class의 instance를 2개 이상 만들어서 동시에 실행시켜 보자.
+
+{empty} +
+
+=== 예상 결과
+
+* name을 counter1, counter2, ...으로 준다.
+* maxCount를 10으로 준다.
++
+--
+====
+[source,console]
+----
+counter1 : 1
+counter2 : 1
+counter1 : 2
+counter2 : 2
+counter2 : 3
+counter1 : 3
+...
+counter10 : 10
+----
+====
+--
++
+
+{empty} +
+
+=== 물음
+
+* 실행 결과가 예상 결과와 비슷하게 출력되는가?
+* 예상 결과와 다르다면 이유에 대해 설명해 보자.

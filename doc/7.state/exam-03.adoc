@@ -1,0 +1,66 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/state
+
+== Exam-03. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자.
+
+{empty} +
+
+=== 과정
+
+1. 공유 자원 SharedCount class를 정의한다.
++
+--
+[source,java]
+----
+include::{sourcedir}/SharedCount.java[]
+----
+* 공유 자원인 count를 변경할 때는 하나의 thread만 접근 가능하도록 처리한다.
+--
++
+2. 동시 실행을 위해 Thread instance 2개를 생성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam03.java[lines=6..7,indent=0]
+----
++
+3. 생성된 object를 실행시킨다.
++
+[source,java]
+----
+include::{sourcedir}/Exam03.java[lines=9..10,indent=0]
+----
++ 
+4. object의 상태를 출력한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam03.java[lines=12..24,indent=0]
+---- 
++
+5. 결과를 확인한다.
++
+====
+[source,console]
+----
+T1 : RUNNABLE, T2 : RUNNABLE
+T1 : TIMED_WAITING, T2 : BLOCKED
+T1 : TIMED_WAITING, T2 : TIMED_WAITING
+T1 : TIMED_WAITING, T2 : RUNNABLE
+T1 : TIMED_WAITING, T2 : TIMED_WAITING
+T1 : TIMED_WAITING, T2 : BLOCKED
+T1 : TIMED_WAITING, T2 : TIMED_WAITING
+...
+----
+====
++
+
+{empty} + 
+
+=== Source Code
+
+==== Exam03.java
+
+[source,java]
+----
+include::{sourcedir}/Exam03.java[]
+----

@@ -1,0 +1,40 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/state
+
+== Exam-01. Thread intance를 생성하여 실행 전 상태를 확인해 보자.
+
+{empty} +
+
+=== 과정
+
+1. Thread instance를 생성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam01.java[lines=5,indent=0]
+----
++
+2. 생성된 object의 상태를 출력한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam01.java[lines=7,indent=0]
+----
++
+3. 결과를 확인한다.
++
+[source,console]
+----
+NEW
+~$
+----
++
+
+
+=== Source Code
+
+==== class Exam01
+
+[source,java]
+----
+include::{sourcedir}/Exam01.java[]
+----

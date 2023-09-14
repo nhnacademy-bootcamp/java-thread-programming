@@ -1,0 +1,97 @@
+:includedir: ../../src/main/java/com/nhnacademy/synchronization/exam01
+:sourcedir: ../../src/main/java/com/nhnacademy/synchronization/exam01
+
+== Exam-01. 공유 count를 갖는 SharedCounter class를 만들어 race condition 문제에 대해 확인해 보자.
+
+{empty} +
+
+=== 과정
+
+1. 공유 count를 위한 SharedCount class를 정의한다.
++
+[source,java]
+----
+include::{includedir}/SharedCount.java[lines=3..17,indent=0]
+----
++
+
+2. SharedCount를 제어할 SharedCounter class를 정의한다.
+** Instance variable로 sharedCount, count, maxCount를 정의한다.
++
+[source,java]
+----
+include::{includedir}/SharedCounter.java[lines=5..6,indent=0]
+----
++
+3. SharedCounter의 constructor는 이름, 최대 증가치, SharedCount를 받는다.
++
+[source,java]
+----
+include::{includedir}/SharedCounter.java[lines=8,indent=0]
+...
+include::{includedir}/SharedCounter.java[lines=11,indent=0]
+----
++
+4. sharedCount가 maxCount에 도달할때까지 sleep()없이 증가 시킨다. (출력도 생략한다.)
++
+[source,java]
+----
+include::{includedir}/SharedCounter.java[lines=17..20,indent=0]
+----
++
+
+5. SharedCount instance 1개와 SharedCounter instatnce 2개를 생성하여 실행 시킨다.
++
+[source,java]
+----
+include::{includedir}/Exam01.java[lines=5..7,indent=0]
+----
++
+
+6. 모든 과정이 완료되면, sharedCount를 출력한다.
++
+[source,java]
+----
+include::{includedir}/Exam01.java[lines=19,indent=0]
+----
++
+
+{empty} + 
+
+=== 실행 결과
+
+====
+[source,console]
+----
+counter1: started
+counter2: started
+counter1: terminated
+counter2: terminated
+sharedCount : 15429
+----
+====
+
+{empty} + 
+
+=== Source Code
+
+==== class SharedCount
+[source,java]
+----
+include::{sourcedir}/SharedCount.java[]
+----
+
+
+==== class SharedCounter
+[source,java]
+----
+include::{sourcedir}/SharedCounter.java[]
+----
+
+
+==== class Exam1
+[source,java]
+----
+include::{sourcedir}/Exam01.java[]
+----
+

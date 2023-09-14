@@ -1,0 +1,55 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/state
+
+== Exam-02. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자.
+
+{empty} +
+
+=== 과정
+
+1. Thread instance를 생성한다.
++
+--
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=5,indent=0]
+----
+* 앞서 정의한 Runnablecounter를 이용한다.
+--
++
+2. 생성된 object를 실행시킨다.
++
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=7,indent=0]
+----
++
+3. object의 상태를 출력한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=8,indent=0]
+----
++
+4. 결과를 확인한다.
++
+====
+[source,console]
+----
+RUNNABLE
+counter : 1
+counter : 2
+...
+----
+====
++
+
+{empty} +
+
+=== Source Code
+
+==== class Exam02
+
+[source,java]
+----
+include::{sourcedir}/Exam02.java[]
+----

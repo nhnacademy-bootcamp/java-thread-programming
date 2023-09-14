@@ -1,0 +1,44 @@
+== Thread 멈추기
+
+{empty} +
+
+Java의 thrad는 start()에 의해 시작되지만, 종료에 대한 명령이 없다. 정확히는 초기 버전에서는 stop()을 지원하였으나, 현재는 안전성을 이유로 사용하지 않을 것을 권장한다.
+
+stop()은 thrad를 즉시 중단시키는 method로서, thread가 실행 중인 상태에서 강제로 종료시켜 thread 내부에서 리소스 정리를 제대로 할 수 없게 되고, 이로 인해 프로그램이 예기치 않게 동작할 수도 있다.
+
+또한, stop()으로 lock을 해제하지 않은 채 thread를 종료시켜 다른 thread에서 lock 획득을 위해 무한히 기다리는 deadlock 상태에 빠질 수 있다.
+
+Thread를 안전하게 종료하기 위해서는 thread 내에서 확인 가능할 수 있도록 상태를 전달해 스스로 종료할 수 있게 만들어야 한다.
+
+{empty} +
+
+=== 상태 제어 이용하기
+
+Thread는 일정 작업을 수행하고 끝나거나 반복된 작업을 수행하도록 동작한다.
+
+과정 수행이 자동 종료가 되던 반복된 작업을 하던 공통적인 문제는 중간에 중단 시키고 싶을 경우 내부 흐름 상에서 계속 진행할지에 대한 상태 표시가 필요하다.
+
+다음 예제를 통해 상태 표시를 이용한 흐름 제어를 알아 보자.
+
+link:quiz-01.adoc[Quiz-01. RunnableCounter class에 중지를 위한 field와 method를 추가하여 동작을 확인하라]
+
+* Quiz01에서 정의한 RunnableCounter class의 instance를 동작중 멈추는데는 문제가 없는가?
+* 만약 문제가 있다면 어떠한 문제가 있는가?
+
+{empty} + 
+ 
+=== Interrupt 이용하기
+
+상태 제어를 통해 thread를 멈추고자 할 경우 발생할 수 문제에 대해 확인하였다.
+
+그렇다고, 이를 해결할 수 있는 방법이 무엇이 있을까?
+
+Java Thread class에는 sleep이나 wait 상태일때에서 외부로부터 이벤트를 전달 받을 수 있는 interrupt가 지원된다.
+
+Interrupt는 Thread class에 상태 정보로도 사용되지만, sleep이나 wait와 같은 대기 상태에서 exception을 발생 시킨다.
+
+이를 대기 상태의 thread를 runnable 상태로 변경할 수 있고, 설정된 interrupt를 통해서 추가적인 처리가 가능하다.
+
+link:quiz-02.adoc[Quiz-02. Thread의 interrupt를 이용해 외부에서 중지하도록 만들어라]
+
+* Quiz02에서 interrupt를 이용할 경우, 앞에서의 flag 이용하는 것과 어떠한 차이가 있는가?

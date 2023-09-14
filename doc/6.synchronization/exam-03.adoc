@@ -1,0 +1,38 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/synchronization/exam03
+== Exam-03. Exam-01에서 발생했던 race condition 문제를 static instance를 생성하고, syncrhronized keyword를 이용해 해결해 보자
+
+{empty} +
+
+=== 과정
+
+1. 공유 자원인 shared count를 static variable로 선언하여 instance와 관계없이 접근할 수 있도록 한다.
++
+[source,java]
+----
+include::{sourcedir}/SharedCount.java[lines=4,indent=0]
+----
++
+2. shared count를 수정할 수 있도록 increment()도 static method로 정의한다.
++
+[source,java]
+----
+include::{sourcedir}/SharedCount.java[lines=17..19,indent=0]
+----
++
+3. 실행 후 결과를 확인해 본다.
+
+{empty} +
+
+=== 실행 결과
+====
+[source,console]
+----
+counter1: started
+counter2: started
+counter1: terminated
+counter2: terminated
+sharedCount : 20000
+----
+====
+
+

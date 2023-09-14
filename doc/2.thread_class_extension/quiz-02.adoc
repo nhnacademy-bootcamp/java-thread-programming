@@ -1,0 +1,48 @@
+== Quiz-02. Thread class를 이용해 1초마타 횟수를 1씩 증가하는 ThreadCounter class를 정의하고, 실행 후 결과를 확인하라.
+
+
+{empty} +
+
+=== 요구 사항
+
+* Thread로 동작할 수 있도록 정의하라.
+** Thread class를 이용한다.
+* Counter class를 정의하라.
+** 시작 후 1초마다 횟수를 1씩 증가 시킨다.
+** 횟수가 변경될 때마다 이름과 횟수를 출력한다.
+** 주어진 최대 횟수에 도달하면, 동작을 종료한다.
+* Constructor를 정의하라.
+** 이름과 최대 횟수를 인수로 받아 초기화하다.
+** 시작 횟수는 0부터한다.
+
+{empty} +
+
+=== 예상 결과
+
+* name을 threadCounter로 준다.
+* maxCount를 10으로 준다.
++
+--
+====
+[source,console]
+----
+threadCounter : 1
+threadCounter : 2
+threadCounter : 3
+...
+threadCounter : 10
+----
+====
+--
++
+
+{empty} +
+
+=== 참고
+
+* Thread class에서 실행 코드는 run()에 정의되어야 한다.
+* Thread class에서 run()은 거의 아무런 작업이 수행되지 않도록 정의되어 있으므로, 재정의가 필요하다.
+* Extended class를 통해 method를 재정의할 경우, 
+** @Override annotation을 이용해 재정의됨을 표시하는게 좋다.
+** method가 잘못 정의될 경우, 이를 알 수 있어 추가적인 문제를 방지한다.
+* Thread class의 instance를 동작시키기 위해서는 start() 호출이 필요하다.

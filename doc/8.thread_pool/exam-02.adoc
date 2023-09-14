@@ -1,0 +1,36 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/thread_pool
+
+== Exam-02. Thread pool를 이용해 한정된 자원에서 많은 작업을 등록하여 수행하도록 구성해 보자
+
+{empty} + 
+
+=== 과정
+
+1. URL이 주어질 경우, 파일을 받는 DownloadWorker class를 정의해 보자.
++
+[source,java]
+----
+include::{sourcedir}/DownloadWorker.java[]
+----
++
+2. 내려 받을 파일의 링크 목록을 준비한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=9..14,indent=0]
+----
++
+3. Thread pool을 생성하고, DownloadWorker object를 생성해 등록한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=17..22,indent=0]
+----
++
+4. 작업이 완료되길 기다린다.
++
+[source,java]
+----
+include::{sourcedir}/Exam02.java[lines=24..26,indent=0]
+----
++

@@ -1,0 +1,9 @@
+== Quiz-01. RunnableCounter class에 중지를 위한 field와 method를 추가하여 동작을 확인하라.
+
+{empty} + 
+
+=== 요구 사항
+
+* 앞에서 구현한 RunnableCounter class를 이용하라.
+* 동작 상태를 위한 running flag를 추가하고, 이를 이용해 동작을 제어하라.
+

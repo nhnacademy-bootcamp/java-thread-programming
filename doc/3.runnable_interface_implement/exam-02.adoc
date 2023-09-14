@@ -1,0 +1,107 @@
+== Exam-02. RunnableCounter에 Thread field를 추가하고, 이를 이용해 실행해 보자
+
+{empty} +
+
+=== 과정
+
+1. RunnableCounter class를 확장하여 SelfRunnableCounter를 만든다.
++
+--
+[source,java]
+----
+public class SelfRunnableCounter implements Runnable {
+    ...
+}
+----
+--
++
+2. SelfRunnableCounter class에 Thread를 위한 field를 추가한다.
++
+--
+[source,java,indent=0]
+----
+    int count;
+    int maxCount;
+    Thread thread;
+----
+--
++
+3. Constructor에서 Thread instance를 생성하고, 인자로 자신을 넘긴다.
++
+--
+[source,java,indent=0]
+----
+    public SelfRunnableCounter(String name, int maxCount) {
+        this.maxCount = maxCount;
+        count = 0;
+        thread = new Thread(this, name);
+    }
+----
+--
++
+4. 실행을 위한 start()를 작성한다.
++
+--
+[source,java,indent=0]
+----
+    public void start() {
+        thread.start();
+    }
+----
+--
++
+5. SelfRunnableCounter class의 정의가 완료되었다면, 테스트 코드를 작성하여 동작을 확인한다.
++
+--
+--
++
+
+{empty} +
+
+=== Source Code
+
+==== class Exam02
+[source,java]
+----
+public class Exam02 {
+    public static void main(String[] args) {
+        SelfRunnableCounter counter = new SelfRunnableCounter("counter", 5);
+
+        counter.start();
+    }
+}
+----
+
+==== class SelfRunnableCounter
+
+[source,java]
+----
+public class SelfRunnableCounter implements Runnable {
+    int count;
+    int maxCount;
+    Thread thread;
+
+    public SelfRunnableCounter(String name, int maxCount) {
+        this.maxCount = maxCount;
+        count = 0;
+        thread = new Thread(this, name);
+    }
+
+    public void start() {
+        thread.start();
+    }
+
+    @Override
+    public void run() {
+        while (count < maxCount) {
+            try {
+                ++count;
+                System.out.println(thread.getName() + " : " + count);
+                Thread.sleep(1000);
+            } catch (InterruptedException ignore) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+}
+----

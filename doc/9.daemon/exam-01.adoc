@@ -1,0 +1,20 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/daemon
+
+== Exam-01. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread의 상태를 확인 하자
+
+=== 과정
+
+1. 1초에 한번씩 메시지를 출력하는 thread 두개를 생성한다.
+2. 하나는 setDaemon() 함수를 이용해 daemon thread로 설정한다.
+3. 두개의 thread를 실행한다.
+4. User thread에 인터럽트를 발생시켜 종료 시킨다.
+5. Main thread가 종료되도록 한 후 daemon thread의 상태를 확인한다.
+
+=== Source Code
+
+==== class Exam01
+
+[source,java]
+----
+include::{sourcedir}/Exam01.java[]
+---- 

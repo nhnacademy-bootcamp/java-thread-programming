@@ -1,0 +1,38 @@
+== Quiz-01. Runnable interface를 이용해 RunnableCounter class를 구현해 보자.
+
+{empty} +
+
+**요구 사항**
+
+* Runnable interface를 지원하도록 RunnableCounter를 구현하라.
+* ThreadCounter와 동일하게 1초에 1씩 증가하며, maxCount까지 출력한다.
+
+{empty} +
+
+**예상 결과**
+
+* name을 runnableCounter로 준다.
+* maxCount를 10으로 준다.
+[source,console]
+----
+runnableCounter : 1
+runnableCounter : 2
+runnableCounter : 3
+...
+runnableCounter : 10
+----
+
+{empty} +
+
+**참고**
+
+* Runnable interface는 run() 구현만을 요구하는 functional interface이다.
+* Runnable interface 구현시 실행을 위해서는 별도의 Thread object가 필요하다.
++
+[source,java]
+----
+Thread thread = new Thread(new RunnableCounter("runnableCounter", 10));
+
+thread.start();
+----
++
