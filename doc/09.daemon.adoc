@@ -11,7 +11,7 @@
 
 {empty} +
 
-link:exam-09-01.adoc[Exam-01. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread 상태를 확인 하자]
+link:exam-09-01.adoc[Exam-9-1. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread 상태를 확인 하자]
 
 
 

@@ -23,7 +23,7 @@ Race condition은 둘이상의 thread가 동시에 공유 자원 접근 시 발�
 
 다음의 예제를 통해 확인해 보자.
 
-link:exam-06-01.adoc[Exam-01. 공유 count를 갖는 SharedCounter class를 만들어 race condition 문제에 대해 확인해 보자]
+link:exam-06-01.adoc[Exam-6-1. 공유 count를 갖는 SharedCounter class를 만들어 race condition 문제에 대해 확인해 보자]
 
 결과는 20000이 나와야 하지만 실행할 때마다 다른 결과를 보인다.
 
@@ -95,6 +95,7 @@ Livelock은 deadlock 문제를 해결하기 위해 공유 자원 접근 요청 �
 
 교착 상태는 관련된 process나 thread가 대기 상태를 계속 유지함으로써 여타의 작업 수행이 불가능하지만 livelock은 해당 자원에 대한 작업만 처리하지 못할 뿐 나머지 작업은 처리되는 차이를 가지고 있다.
 
+link:https://www.baeldung.com/java-deadlock-livelock[Java Thread Deadlock and Livelock]
 {empty} +
 
 == 6-2. Synchronized
@@ -116,31 +117,31 @@ synchronized를 이용한 instance method 동기화 방법은 아래와 같이 m
 public synchronized void increment() {...}
 ----
 
-link:exam-06-02.adoc[Exam-02. Exam-01에서 발생했던 race condition 문제를 syncrhronized keyword를 이용해 해결해 보자]
+link:exam-06-02.adoc[Exam-6-2. Exam-6-1에서 발생했던 race condition 문제를 syncrhronized keyword를 이용해 해결해 보자]
 
 === 6-2-2. Static method 동기화
 
 위에서는 instance method에 대해 synchronized를 적용해 보았다. 여기서는 instance object와 상관없이 적용될 수 있음을 확인해 보도록 한다.
 
 
-link:exam-06-03.adoc[Exam-03. Exam-01에서 발생했던 race condition 문제를 static instance를 생성하고, syncrhronized keyword를 이용해 해결해 보자]
+link:exam-06-03.adoc[Exam-6-3. Exam-6-1에서 발생했던 race condition 문제를 static instance를 생성하고, syncrhronized keyword를 이용해 해결해 보자]
 
-Exam-02와 Exam-03의 근본적인 동작은 동일하지만, Exam-02는 동적으로 생성된 instance variable에 적용하고, Exam-03는 class loading 시점에 생성되는 static variable에 적용한 것이 다르다.
+Exam-6-2와 Exam-6-3의 근본적인 동작은 동일하지만, Exam-6-2는 동적으로 생성된 instance variable에 적용하고, Exam-6-3는 class loading 시점에 생성되는 static variable에 적용한 것이 다르다.
 
 {empty} +
 
-=== Code block 동기화
+=== 6-2-3. Code block 동기화
 
 그렇다면, 동기화를 위해서는 반드시 해당 object의 class에서 적용되어야 하는가?
 
 그렇지는 않다. synchronized는 method 뿐만 아니라 별도의 code block에도 적용 가능하다.
 다만, code block 생성시 lock을 설정할 object는 필요하다.
 
-link:exam-04.adoc[Exam-04. Exam-01에서 발생했던 race condition 문제를 SharedCount object와 synchronized code block을 이용해 해결해 보자]
+link:exam-06-04.adoc[Exam-6-4. Exam-6-1에서 발생했던 race condition 문제를 SharedCount object와 synchronized code block을 이용해 해결해 보자]
 
 {empty} +
 
-== Synchronization Control
+== 6-3. Synchronization Control
 
 Java에서는 synchronized method 또는 block에서의 제어를 위해 wait()와 notify()를 지원한다.
 
@@ -154,7 +155,7 @@ image::image/wait_and_notify.svg[title="Wait and Notify", align=center]
 
 {empty} +
 
-=== wait()
+=== 6-3-1. wait()
 
 wait()는 synchronized 영역 내에서 소유하고 있는 lock을 양보하고, WAITING 또는 TIMED_WAITING 상태로 전환되어 notify가 올때 까지 timeout이 될때까지 기다리도록 사용된다. 이는 다른 스레드에서 notify()나 notifyAll()을 호출함으로써 WAITING 또는 TIMED_WAITING 상태의 스레드가 RNNNABLE 상태로 변경된다.
 
@@ -164,14 +165,14 @@ wait()에 의해 lock 권한을 잃어버리고, WAITING 또는 TIMED_WAITING �
 
 {empty} +
 
-=== notify()
+=== 6-3-2. notify()
 
 notify()  함수는 wait() 함수와 마찬가지로 lock을 소유한 상태에서 호출할 수 있다. notify() 함수가 호출되면, wait() 함수를 이용해 대기 상태에 있던 스레드 중 임의의 하나가 깨어난다. 깨어난 스레드는 WAITING 또는 TIMED_WAITING 상태에서 RUNNABLE 상태로 변경되어 실행할 수 있는 상태가 된다.
 
 예제를 통해 wait()와 notify()에 대해 알아보자.
 예제는 Data class를 이용해 문자열을 주고 받는다.
 
-link:exam-05.adoc[Exam-05. Baeldung: wait and notify() method in java]
+link:exam-06-05.adoc[Exam-6-5. Baeldung: wait and notify() method in java]
 
 {empty} +
 

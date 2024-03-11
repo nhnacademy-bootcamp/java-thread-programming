@@ -4,7 +4,9 @@
 
 Thread는 아래와 같은 생명 주기를 가질 수 있다.
 
-image::image/thread_state.png[title="Life cycle of a thread in java"]
+image::https://www.baeldung.com/wp-content/uploads/2018/02/Life_cycle_of_a_Thread_in_Java.jpg["life cycle of a thread in Java"]
+
+**link:https://www.baeldung.com/java-thread-lifecycle[Life Cycle of a Thread in Java]**
 
 {empty} +
 Thread의 상태는 총 6가지로구분될 수 잇으며, 개별 상태로 여러가지 경로가 만들어지 수 있다.
@@ -42,14 +44,14 @@ Thread의 상태는 총 6가지로구분될 수 잇으며, 개별 상태로 여�
 
 * Thread object가 생성은 되었지만, 실행은 되지 않은 상태를 말한다.
 
-link:exam-01.adoc[Exam-01. Thread intance를 생성하여 실행 전 상태를 확인해 보자]
+link:exam-07-01.adoc[Exam-7-1. Thread intance를 생성하여 실행 전 상태를 확인해 보자]
 
 === 7-1-2. RUNNABLE
 
 * 실행 준비 상태로 scheduler에 의해 실행되기를 기다리는 상태이다.
 * 언제든지 실행 상태가 될 수 있다.
 
-link:exam-02.adoc[Exam-02. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자]
+link:exam-07-02.adoc[Exam-7-2. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자]
 
 === 7-1-3. RUNNING
 
@@ -60,7 +62,7 @@ link:exam-02.adoc[Exam-02. Thread intance를 생성하여 RUNNABLE 상태를 확
 
 * Synchronized code block을 다른 thread가 점유하고 있는 경우, 해당 code block의 점유 상태가 해지 될때까지 기다린다.
 
-link:exam-03.adoc[Exam-03. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자]
+link:exam-07-03.adoc[Exam-7-3. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자]
 
 
 === 7-1-5. WAITING
@@ -68,7 +70,7 @@ link:exam-03.adoc[Exam-03. Thread intance를 생성하여 BLOCKED 상태를 확�
 * 스스로 대기 상태가 된 후 다른 thread에서 알림을 줄때까지 기다린다.
 * Synchronized block에서 wait(), 다른 thread가 종료되길 기다리는 join() 등 사용한 경우 적용될 수 있다.
 
-link:exam-04.adoc[Exam-04. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자]
+link:exam-07-04.adoc[Exam-7-4. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자]
 
 
 === 7-1-6. TERMINATED
@@ -80,6 +82,13 @@ link:exam-04.adoc[Exam-04. Thread를 실행 시킨 후 종료되길 기다리는
 
 * WAITING과 동일하지만, 제한 시간 설정이 가능하다.
 * 제한 시간내에 알림을 받지 못하면 WAITING을 해제하고 RUNNABLE로 변경된다.
+** thread.sleep(long millis)
+** wait(int timeout) or wait(int timeout, int nanos)
+** thread.join(long millis)
+** LockSupport.parkNanos
+** LockSupport.parkUntil
+
+link:exam-07-05.adoc[Exam-7-5. Thread를 실행 시킨 후 일정 시간 sleep 상태를 만들고, TIMED_WAITING 상태를 확인해 보자]
 
 {empty} +
 
@@ -209,7 +218,7 @@ a|
 * 지정된 시간 동안 thread를 일시 정지한다.
 * 지정된 시간이 지나고 나면 다시 실행상태가 된다.
 
-link:quiz-01.adoc[Quiz-01. sleep()를 이용해 일정 시간 간격으로 tick을 출력하는 ticker를 만들어라]
+link:quiz-07-01.adoc[Quiz-7-1. sleep()를 이용해 일정 시간 간격으로 tick을 출력하는 ticker를 만들어라]
 
 {empty} +
 
@@ -224,6 +233,7 @@ link:quiz-01.adoc[Quiz-01. sleep()를 이용해 일정 시간 간격으로 tick�
 * wait()는 **java.lang.Object class**의 instance method이다. 즉, 이 method는 Java로 생성하는 모든 object에서 사용할 수 있다.
 * sleep()는 **java.lang.Thread class**의 class method이다. 즉, thread에서만 사용할 수 있습니다.
 
+**참고: link:https://www.baeldung.com/java-wait-and-sleep[Difference Between Wait and Sleep in Java]**
 {empty} +
 
 === 7-2-6. join()
@@ -236,7 +246,7 @@ join()는 3가지로 overloading 되어 있다.
 * join(long millis) : 호출한 thread를 지정된 시간 동안만 기다린다. 대기 시간은 밀리초 단위로 제어한다.
 * join(long mills, int nanos) : 호출한 thread를 지정된 시간 동안 기다린다. 대기 시간은 나노초 단위로 제어한다.
 
-link:quiz-02.adoc[Quiz-02. Thread를 실행시키고, 모든 thread가 종료되면 프로그램이 종료되도록 하라]
+link:quiz-07-02.adoc[Quiz-7-2. Thread를 실행시키고, 모든 thread가 종료되면 프로그램이 종료되도록 하라]
 
 
 {empty} +

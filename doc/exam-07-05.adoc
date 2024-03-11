@@ -1,0 +1,46 @@
+:sourcedir: ../src/main/java/com/nhnacademy/state
+
+== Exam-7-5. Thread를 실행 시킨 후 일정 시간 sleep 상태를 만들고, TIMED_WAITING 상태를 확인해 보자
+
+{empty} +
+
+=== 과정
+
+1. Thread class를 이용해 5초간 sleep 하는 object를 생성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam05.java[lines=13..22,indent=0]
+----
++
+2. main 함수에서 1초 sleep후 해당 object의 상태를 출력한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam05.java[lines=8..9,indent=0]
+----
++
+3. 결과는 다음과 같다.
++
+====
+[source,console]
+----
+TIMED_WAITING
+----
+====
++
+
+{empty} +
+
+=== Source Code
+
+==== class Exam05
+
+[source,java]
+----
+include::{sourcedir}/Exam05.java[]
+----
+
+---
+
+link:07.state.adoc[돌아가기]
