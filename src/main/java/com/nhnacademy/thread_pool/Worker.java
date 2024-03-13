@@ -13,7 +13,7 @@ public class Worker implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(getName() + " started ");
+        System.out.println(getName() + " started : " + Thread.currentThread().getName());
         try {
             Thread.sleep(1999);
         } catch (InterruptedException e) {
