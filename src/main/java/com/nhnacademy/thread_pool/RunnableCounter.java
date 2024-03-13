@@ -47,7 +47,7 @@ public class RunnableCounter implements Runnable {
     @Override
     public void run() {
         try {
-            while (count < maxCount) {
+            while (!Thread.currentThread().isInterrupted() && count < maxCount) {
                 increment();
                 System.out.println(thread.getName() + " : " + getCount());
                 Thread.sleep(interval);
