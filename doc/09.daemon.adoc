@@ -11,7 +11,7 @@
 
 {empty} +
 
-link:exam-09-01.adoc[Exam-9-1. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread 상태를 확인 하자]
+link:exam/exam-09-01.adoc[Exam-9-1. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread 상태를 확인 하자]
 
 
 
@@ -20,3 +20,11 @@ link:exam-09-01.adoc[Exam-9-1. User thread와 daemon thread를 생성하고, 일
 == 9-1.정리
 * 모든 thread의 생성과 종료를 직접 관리하지 않을 수도 있다.
 * Deamon thread의 우선 순위는 낮으나 조정 가능하다.
+
+ifndef::env-github[]
+link:../index.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+link:../README.md[돌아가기]
+endif::[]

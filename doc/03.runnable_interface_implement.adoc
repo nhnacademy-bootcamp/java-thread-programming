@@ -13,7 +13,7 @@ Thread를 이용하는 class는 앞서 소개한 Thread class 확장 외에 Runn
 
 앞서 본 Thread class의 hireachy를 보면 Thread class도 Runnable interface의 구현으로 정의되었음을 알 수 있다.
 
-link:quiz-03-01.adoc[Quiz-01. Runnable interface를 이용해 RunnableCounter class를 구현해 보자]
+link:quiz/quiz-03-01.adoc[Quiz-01. Runnable interface를 이용해 RunnableCounter class를 구현해 보자]
 
 Runnable interface는 Thread class를 이용해 실행할 수 있도록 필요한 기능을 method로 선언하고 있을 뿐 실제 실행을 위해서는 Quiz-01에서 보는 바와 같이 별도의 Thread class를 이용한 object 생성이 필요하다.
 
@@ -37,7 +37,7 @@ Thread는 Runnable interface의 run() 수행이 끝나면 종료된다.
 
 다만, 해당 thread를 원하는 시점에 종료시키거나 관련 정보 확인이 어렵다.
 
-link:exam-03-01.adoc[Exam-01. Thread object 생성 후 종료될때 자동 삭제하도록 만들어 보자]
+link:exam/exam-03-01.adoc[Exam-01. Thread object 생성 후 종료될때 자동 삭제하도록 만들어 보자]
 
 {empty} +
 
@@ -46,7 +46,7 @@ link:exam-03-01.adoc[Exam-01. Thread object 생성 후 종료될때 자동 삭�
 
 이경우, 생성던 object에서 자신과 관련된 Thread instance를 관리하므로, thread 제어와 관련된 처리가 가능하다.
 
-link:exam-03-02.adoc[Exam-02. RunnableCounter에 Thread field를 추가하고, 이를 이용해 실행해 보자]
+link:exam/exam-03-02.adoc[Exam-02. RunnableCounter에 Thread field를 추가하고, 이를 이용해 실행해 보자]
 
 {empty} +
 
@@ -56,8 +56,18 @@ Thread Pool을 이용한 관리는 첫번째 방법과 유사하다. 다만, Thr
 하지만, 이 방법은 Thread 관리에 대한 권한이 직접적으로 가지고 있지 못해 Thread 제어가 필요한 경우 사용에 제한이 될 수 있다.
 
 
-link:exam-03-03.adoc[Exam-03. Thread pool을 이용해 RunnableCounter를 실행해 보자]
+link:exam/exam-03-03.adoc[Exam-03. Thread pool을 이용해 RunnableCounter를 실행해 보자]
 
 ---
 
-link:00.index.adoc[돌아가기]
+ifndef::env-github[]
+
+link:../index.adoc[돌아가기]
+
+endif::[]
+
+ifdef::env-github[]
+
+[돌아가기](../README.md)
+
+endif::[]

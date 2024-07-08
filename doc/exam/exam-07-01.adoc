@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/state
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/state
 
 == Exam-7-1. Thread intance를 생성하여 실행 전 상태를 확인해 보자.
 
@@ -36,4 +36,10 @@ include::{sourcedir}/Exam01.java[]
 
 ---
 
-link:07.state.adoc[돌아가기]
+ifndef::env-github[]
+link:../07.state.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../07.state.adoc)
+endif::[]

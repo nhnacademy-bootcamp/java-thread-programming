@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/synchronization/exam05
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/synchronization/exam05
 
 == Exam-6-5. Baeldung: wait and notify() method in java
 
@@ -30,4 +30,10 @@ include::{sourcedir}/Data.java[lines=11..21,indent=0]
 
 ---
 
-link:06.synchronization.adoc[돌아가기]
+ifndef::env-github[]
+link:../06.synchronization.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../06.synchronization.adoc)
+endif::[]

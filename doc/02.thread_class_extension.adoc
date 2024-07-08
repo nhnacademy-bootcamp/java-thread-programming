@@ -24,14 +24,14 @@ image::image/thread_class_hierarchy.svg[align=center]
 
 간단하게 Counter class를 만들어 보자.
 
-link:quiz-02-01.adoc[Quiz-01. 1초마다 횟수를 1씩 증가하는 Counter class로 정의하고, 실행 후 결과를 확인하라]
+link:quiz/quiz-02-01.adoc[Quiz-01. 1초마다 횟수를 1씩 증가하는 Counter class로 정의하고, 실행 후 결과를 확인하라]
 
 
 {empty} +
 
 위에서 정의한 Counter class를 Thread class를 이용해 thread로 동작하도록 수정해 보자.
 
-link:quiz-02-02.adoc[Quiz-02. Thread class를 이용해 1초마타 횟수를 1씩 증가하는 ThreadCounter class를 정의하고, 실행 후 결과를 확인하라]
+link:quiz/quiz-02-02.adoc[Quiz-02. Thread class를 이용해 1초마타 횟수를 1씩 증가하는 ThreadCounter class를 정의하고, 실행 후 결과를 확인하라]
 
 
 {empty} +
@@ -49,12 +49,22 @@ link:quiz-02-02.adoc[Quiz-02. Thread class를 이용해 1초마타 횟수를 1�
 
 여러개의 instance를 만들어서 동시에 실행 시켜 보자.
 
-link:quiz-02-03.adoc[Quiz-03. Counter class의 instance를 2개 이상 만들고 실행 후 동작에 대해 설명해보자]
+link:quiz/quiz-02-03.adoc[Quiz-03. Counter class의 instance를 2개 이상 만들고 실행 후 동작에 대해 설명해보자]
 
-link:quiz-02-04.adoc[Quiz-04. ThreadCounter class의 instance를 2개 이상 만들고 실행 후 동작에 대해 설명해보자]
+link:quiz/quiz-02-04.adoc[Quiz-04. ThreadCounter class의 instance를 2개 이상 만들고 실행 후 동작에 대해 설명해보자]
 
 * 두가지 경우를 비교해 thread의 동작에 대해 설명해 보자.
 
 ---
 
-link:00.index.adoc[돌아가기]
+ifndef::env-github[]
+
+link:../index.adoc[돌아가기]
+
+endif::[]
+
+ifdef::env-github[]
+
+[돌아가기](../README.md)
+
+endif::[]

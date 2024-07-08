@@ -49,4 +49,10 @@ threadCounter : 10
 
 ---
 
-link:02.thread_class_extension.adoc[돌아가기]
+ifndef::env-github[]
+link:../02.thread_class_extension.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../02.thread_class_extension.adoc)
+endif::[]

@@ -44,14 +44,14 @@ Thread의 상태는 총 6가지로구분될 수 잇으며, 개별 상태로 여�
 
 * Thread object가 생성은 되었지만, 실행은 되지 않은 상태를 말한다.
 
-link:exam-07-01.adoc[Exam-7-1. Thread intance를 생성하여 실행 전 상태를 확인해 보자]
+link:exam/exam-07-01.adoc[Exam-7-1. Thread intance를 생성하여 실행 전 상태를 확인해 보자]
 
 === 7-1-2. RUNNABLE
 
 * 실행 준비 상태로 scheduler에 의해 실행되기를 기다리는 상태이다.
 * 언제든지 실행 상태가 될 수 있다.
 
-link:exam-07-02.adoc[Exam-7-2. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자]
+link:exam/exam-07-02.adoc[Exam-7-2. Thread intance를 생성하여 RUNNABLE 상태를 확인해 보자]
 
 === 7-1-3. RUNNING
 
@@ -62,7 +62,7 @@ link:exam-07-02.adoc[Exam-7-2. Thread intance를 생성하여 RUNNABLE 상태를
 
 * Synchronized code block을 다른 thread가 점유하고 있는 경우, 해당 code block의 점유 상태가 해지 될때까지 기다린다.
 
-link:exam-07-03.adoc[Exam-7-3. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자]
+link:exam/exam-07-03.adoc[Exam-7-3. Thread intance를 생성하여 BLOCKED 상태를 확인해 보자]
 
 
 === 7-1-5. WAITING
@@ -70,7 +70,7 @@ link:exam-07-03.adoc[Exam-7-3. Thread intance를 생성하여 BLOCKED 상태를 
 * 스스로 대기 상태가 된 후 다른 thread에서 알림을 줄때까지 기다린다.
 * Synchronized block에서 wait(), 다른 thread가 종료되길 기다리는 join() 등 사용한 경우 적용될 수 있다.
 
-link:exam-07-04.adoc[Exam-7-4. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자]
+link:exam/exam-07-04.adoc[Exam-7-4. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자]
 
 
 === 7-1-6. TERMINATED
@@ -88,7 +88,7 @@ link:exam-07-04.adoc[Exam-7-4. Thread를 실행 시킨 후 종료되길 기다�
 ** LockSupport.parkNanos
 ** LockSupport.parkUntil
 
-link:exam-07-05.adoc[Exam-7-5. Thread를 실행 시킨 후 일정 시간 sleep 상태를 만들고, TIMED_WAITING 상태를 확인해 보자]
+link:exam/exam-07-05.adoc[Exam-7-5. Thread를 실행 시킨 후 일정 시간 sleep 상태를 만들고, TIMED_WAITING 상태를 확인해 보자]
 
 {empty} +
 
@@ -218,7 +218,7 @@ a|
 * 지정된 시간 동안 thread를 일시 정지한다.
 * 지정된 시간이 지나고 나면 다시 실행상태가 된다.
 
-link:quiz-07-01.adoc[Quiz-7-1. sleep()를 이용해 일정 시간 간격으로 tick을 출력하는 ticker를 만들어라]
+link:quiz/quiz-07-01.adoc[Quiz-7-1. sleep()를 이용해 일정 시간 간격으로 tick을 출력하는 ticker를 만들어라]
 
 {empty} +
 
@@ -246,7 +246,7 @@ join()는 3가지로 overloading 되어 있다.
 * join(long millis) : 호출한 thread를 지정된 시간 동안만 기다린다. 대기 시간은 밀리초 단위로 제어한다.
 * join(long mills, int nanos) : 호출한 thread를 지정된 시간 동안 기다린다. 대기 시간은 나노초 단위로 제어한다.
 
-link:quiz-07-02.adoc[Quiz-7-2. Thread를 실행시키고, 모든 thread가 종료되면 프로그램이 종료되도록 하라]
+link:quiz/quiz-07-02.adoc[Quiz-7-2. Thread를 실행시키고, 모든 thread가 종료되면 프로그램이 종료되도록 하라]
 
 
 {empty} +
@@ -262,4 +262,11 @@ link:https://www.baeldung.com/java-thread-yield[참고 : Brief Introduction to J
 {empty} +
 
 ---
-link:00.index.adoc[돌아가기]
+
+ifndef::env-github[]
+link:../index.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+link:../README.md[돌아가기]
+endif::[]

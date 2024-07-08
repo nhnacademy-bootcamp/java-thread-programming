@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/state
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/state
 
 == Exam-7-4. Thread를 실행 시킨 후 종료되길 기다리는 WAITING 상태를 확인해 보자
 
@@ -66,4 +66,10 @@ include::{sourcedir}/Exam04.java[]
 
 ---
 
-link:07.state.adoc[돌아가기]
+ifndef::env-github[]
+link:../07.state.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../07.state.adoc)
+endif::[]

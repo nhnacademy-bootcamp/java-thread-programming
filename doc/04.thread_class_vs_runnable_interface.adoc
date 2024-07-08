@@ -21,3 +21,11 @@ Thread class를 이용하는 것과 Runnable 인터페이스를 이용하는 것
 |Runnable interface는 functional interface로 Lambda로 구현 가능하다.
 |===
 
+
+ifndef::env-github[]
+link:../index.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+link:../README.md[돌아가기]
+endif::[]

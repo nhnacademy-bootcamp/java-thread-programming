@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/thread_pool
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/thread_pool
 
 == Exam-8-3. 2개의 thread로 thread group을 만들고, 일괄 제어해 보자.
 
@@ -49,4 +49,10 @@ include::{sourcedir}/Exam03.java[]
 
 ---
 
-link:08.thread_pool.adoc[돌아가기]
+ifndef::env-github[]
+link:../08.thread_pool.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../08.thread_pool.adoc)
+endif::[]

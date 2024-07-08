@@ -50,4 +50,10 @@ counter2 : 5
 
 ---
 
-link:03.runnable_interface_implement.adoc[돌아가기]
+ifndef::env-github[]
+link:../03.runnable_interface_implement.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../03.runnable_interface_implement.adoc)
+endif::[]

@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/synchronization/exam01
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/synchronization/exam01
 
 == Exam-6-1. 공유 count를 갖는 SharedCounter class를 만들어 race condition 문제에 대해 확인해 보자.
 
@@ -96,4 +96,10 @@ include::{sourcedir}/Exam01.java[]
 
 ---
 
-link:06.synchronization.adoc[돌아가기]
+ifndef::env-github[]
+link:../06.synchronization.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../06.synchronization.adoc)
+endif::[]

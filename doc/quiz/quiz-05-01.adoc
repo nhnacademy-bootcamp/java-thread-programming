@@ -9,4 +9,10 @@
 
 ---
 
-link:05.stop.adoc[돌아가기]
+ifndef::env-github[]
+link:../05.stop.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../05.stop.adoc)
+endif::[]

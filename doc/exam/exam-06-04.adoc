@@ -1,0 +1,12 @@
+== Exam-6-4. Exam-6-1에서 발생했던 race condition 문제를 SharedCount object와 synchronized code block을 이용해 해결해 보자
+
+
+---
+
+ifndef::env-github[]
+link:../06.synchronization.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../06.synchronization.adoc)
+endif::[]

@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/thread_pool
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/thread_pool
 == Exam-8-1. 10개의 thread가 시작 메시지를 출력하고, 2초간 대기 후 종료 메시지를 출력하도록 thread pool을 구성해보자.
 
 {empty} +
@@ -61,4 +61,10 @@ include::{sourcedir}/Exam01.java[]
 
 ---
 
-link:08.thread_pool.adoc[돌아가기]
+ifndef::env-github[]
+link:../08.thread_pool.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../08.thread_pool.adoc)
+endif::[]

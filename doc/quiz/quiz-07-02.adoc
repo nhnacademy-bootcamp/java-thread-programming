@@ -30,4 +30,10 @@ All threads stopped
 
 ---
 
-link:07.state.adoc[돌아가기]
+ifndef::env-github[]
+link:../07.state.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../07.state.adoc)
+endif::[]

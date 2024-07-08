@@ -21,11 +21,17 @@
 ** 예제에서는 InterruptedException 발생시 해당 thread에 interrupt를 설정해 준다.
 [source,java]
 ----
-include::../src/main/java/com/nhnacademy/stop/ThreadUnlimitedCounter.java[lines=19..21,indent=0]
+include::../../example/thread/src/main/java/com/nhnacademy/stop/ThreadUnlimitedCounter.java[lines=19..21,indent=0]
 ----
 --
 +
 
 ---
 
-link:05.stop.adoc[돌아가기]
+ifndef::env-github[]
+link:../05.stop.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../05.stop.adoc)
+endif::[]

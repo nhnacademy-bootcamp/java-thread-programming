@@ -80,4 +80,10 @@ xtra         487     346     487  0    1 17:39 pts/0    00:00:00 ps -eLf
 
 ---
 
-link:01.process_vs_thread.adoc[돌아가기]
+ifndef::env-github[]
+link:../01.process_vs_thread.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../01.process_vs_thread.adoc)
+endif::[]

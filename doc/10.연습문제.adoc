@@ -95,4 +95,10 @@ public class Consumer implements Runnable {
 }
 ----
 
-link:00.index.adoc[돌아가기]
+ifndef::env-github[]
+link:../index.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+link:../README.md[돌아가기]
+endif::[]

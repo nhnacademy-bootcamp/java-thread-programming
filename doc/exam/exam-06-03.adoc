@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/synchronization/exam03
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/synchronization/exam03
 == Exam-6-3. Exam-6-1에서 발생했던 race condition 문제를 static instance를 생성하고, syncrhronized keyword를 이용해 해결해 보자
 
 {empty} +
@@ -38,4 +38,10 @@ sharedCount : 20000
 
 ---
 
-link:06.synchronization.adoc[돌아가기]
+ifndef::env-github[]
+link:../06.synchronization.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../06.synchronization.adoc)
+endif::[]

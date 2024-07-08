@@ -1,4 +1,4 @@
-:sourcedir: ../src/main/java/com/nhnacademy/daemon
+:sourcedir: ../../example/thread/src/main/java/com/nhnacademy/daemon
 
 == Exam-01. User thread와 daemon thread를 생성하고, 일정 시간 후 main thread를 종료한 후 thread의 상태를 확인 하자
 
@@ -20,4 +20,10 @@ include::{sourcedir}/Exam01.java[]
 ----
 
 ---
-link:09.daemon.adoc[돌아가기]
+ifndef::env-github[]
+link:../09.daemon.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+[돌아가기](../09.daemon.adoc)
+endif::[]

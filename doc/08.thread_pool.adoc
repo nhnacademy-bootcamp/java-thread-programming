@@ -16,9 +16,9 @@ image::image/thread_pool.png[title="Thread Pool", align=center]
 
 간단한 예제를 살펴 보자.
 
-link:exam-08-01.adoc[exam-8-1. 10개의 thread가 시작 메시지를 출력하고, 2초간 대기 후 종료 메시지를 출력하도록 thread pool을 구성해보자.]
+link:exam/exam-08-01.adoc[exam-8-1. 10개의 thread가 시작 메시지를 출력하고, 2초간 대기 후 종료 메시지를 출력하도록 thread pool을 구성해보자.]
 
-link:exam-08-02.adoc[exam-8-2. Thread pool를 이용해 한정된 자원에서 많은 작업을 등록하여 수행하도록 구성해 보자]
+link:exam/exam-08-02.adoc[exam-8-2. Thread pool를 이용해 한정된 자원에서 많은 작업을 등록하여 수행하도록 구성해 보자]
 
 {empty} +
 
@@ -51,9 +51,15 @@ link:exam-08-02.adoc[exam-8-2. Thread pool를 이용해 한정된 자원에서 �
 * 단일 함수 호출로 thread group을 pause, resume 또는 stop할 수 있다.
 * pause, resume, stop 등의 안전성의 이유로 사용하지 말것을 권장함으로 ThreadGroup 역시 사용하지 않는 것이 좋다.
 
-link:exam-08-03.adoc[exam-8-3. 2개의 thread로 thread group을 만들고, 일괄 제어해 보자.]
+link:exam/exam-08-03.adoc[exam-8-3. 2개의 thread로 thread group을 만들고, 일괄 제어해 보자.]
 {empty} +
 
 ---
 
-link:00.index.adoc[돌아가기]
+ifndef::env-github[]
+link:../index.adoc[돌아가기]
+endif::[]
+
+ifdef::env-github[]
+link:../README.md[돌아가기]
+endif::[]
